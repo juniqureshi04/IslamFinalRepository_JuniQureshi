@@ -1,0 +1,235 @@
+.world-map {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(201, 164, 92, 0.12), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(201, 164, 92, 0.08), transparent 20%),
+    linear-gradient(180deg, #030508 0%, #09111d 100%);
+  overflow: hidden;
+}
+
+.world-map__surface {
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  position: relative;
+}
+
+.world-map__surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 400;
+  background-image:
+    linear-gradient(rgba(201, 164, 92, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 164, 92, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.world-map .leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #050912 0%, #0b1524 100%);
+  font-family: Inter, Helvetica, Arial, sans-serif;
+}
+
+.world-map .leaflet-control-zoom {
+  border: 1px solid rgba(201, 164, 92, 0.14);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+}
+
+.world-map .leaflet-control-zoom a {
+  background: rgba(8, 16, 28, 0.94);
+  color: #c9a45c;
+  border-bottom-color: rgba(201, 164, 92, 0.12);
+}
+
+.world-map .leaflet-control-zoom a:hover,
+.world-map .leaflet-control-zoom a:focus-visible {
+  background: rgba(15, 28, 47, 0.98);
+  color: #f0d089;
+}
+
+.world-map .leaflet-control-attribution {
+  background: rgba(5, 10, 18, 0.76);
+  color: #b7ad9d;
+}
+
+.world-map .leaflet-control-attribution a {
+  color: #c9a45c;
+}
+
+.world-map__marker-wrapper {
+  background: transparent;
+  border: 0;
+}
+
+.world-map__marker {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c9a45c, #fff0bf);
+  box-shadow: 0 0 0 8px rgba(201, 164, 92, 0.08), 0 0 24px rgba(201, 164, 92, 0.48);
+  cursor: pointer;
+  transform: scale(0.7);
+  opacity: 0;
+  animation: marker-enter 480ms ease forwards;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.world-map__marker::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(201, 164, 92, 0.26);
+  border-radius: 50%;
+  animation: marker-pulse 2.4s ease-out infinite;
+}
+
+.world-map__marker:hover,
+.world-map__marker:focus-visible,
+.world-map__marker.is-active {
+  transform: translateY(-2px) scale(1.08);
+  filter: brightness(1.05);
+  box-shadow: 0 0 0 10px rgba(201, 164, 92, 0.14), 0 0 36px rgba(201, 164, 92, 0.62);
+  outline: none;
+}
+
+.world-map__marker--cluster {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #081019;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.world-map__popup-shell .leaflet-popup-content-wrapper {
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(13, 22, 37, 0.98), rgba(7, 13, 23, 0.96));
+  border: 1px solid rgba(201, 164, 92, 0.14);
+  color: #f5efe5;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.34);
+}
+
+.world-map__popup-shell .leaflet-popup-tip {
+  background: rgba(13, 22, 37, 0.98);
+}
+
+.world-map__popup-shell .leaflet-popup-content {
+  margin: 0;
+}
+
+.world-map__popup {
+  min-width: 250px;
+  max-width: 300px;
+  padding: 18px;
+  animation: popup-fade 220ms ease;
+}
+
+.world-map__popup-region {
+  margin: 0 0 8px;
+  color: #c9a45c;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.world-map__popup-title {
+  margin: 0 0 10px;
+  color: #f5efe5;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  line-height: 1.15;
+}
+
+.world-map__popup-text,
+.world-map__popup-details p {
+  margin: 0;
+  color: #b7ad9d;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.world-map__popup-details {
+  margin-top: 14px;
+  border-top: 1px solid rgba(201, 164, 92, 0.12);
+  padding-top: 12px;
+}
+
+.world-map__popup-details summary {
+  cursor: pointer;
+  color: #f0d089;
+  font-weight: 600;
+  list-style: none;
+}
+
+.world-map__popup-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.world-map__popup-details p {
+  margin-top: 12px;
+}
+
+@keyframes marker-enter {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes marker-pulse {
+  0% {
+    transform: scale(0.86);
+    opacity: 0.72;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes popup-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .world-map__surface {
+    min-height: 560px;
+    height: 82vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .world-map__surface {
+    min-height: 500px;
+    height: 76vh;
+  }
+
+  .world-map__popup {
+    min-width: 220px;
+    max-width: 260px;
+    padding: 16px;
+  }
+}

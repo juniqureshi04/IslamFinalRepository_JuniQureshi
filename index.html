@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Headlines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor-glow" id="cursor-glow"></div>
+  <div class="page-noise"></div>
+  <div class="ambient ambient--one"></div>
+  <div class="ambient ambient--two"></div>
+  <div class="calligraphy calligraphy--hero" aria-hidden="true">&#1587;&#1604;&#1575;&#1605;</div>
+  <div class="calligraphy calligraphy--side" aria-hidden="true">&#1606;&#1608;&#1585;</div>
+  <div class="calligraphy calligraphy--base" aria-hidden="true">&#1585;&#1581;&#1605;&#1577;</div>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#top">
+        <span class="brand__mark"></span>
+        <span class="brand__text">Beyond the Headlines</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#narratives">Narratives</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#map">Map</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <header class="hero panel">
+        <div class="hero__copy">
+          <p class="eyebrow">Digital Exhibit</p>
+          <h1>Islam Beyond the Headlines</h1>
+          <p class="hero__subtitle">
+            A digital exhibit about how Islam is understood, represented, and actually lived across different places and communities.
+          </p>
+          <div class="hero__actions">
+            <a class="button" href="#homepage-intro">Enter the Exhibit</a>
+            <a class="button button--ghost" href="#narratives">Start with Media</a>
+          </div>
+        </div>
+
+        <aside class="hero__rail">
+          <article class="hero__question panel panel--inset">
+            <p class="panel__label">Exhibit Focus</p>
+            <p class="panel__text">
+              This project looks at Islam through media, history, and global context to push back against oversimplified ideas and show something more human and real.
+            </p>
+          </article>
+
+          <div class="hero__metrics">
+            <article class="metric panel panel--inset">
+              <span class="metric__value" id="metric-narratives">03</span>
+              <span class="metric__label">Narrative Contrasts</span>
+            </article>
+            <article class="metric panel panel--inset">
+              <span class="metric__value" id="metric-timeline">06</span>
+              <span class="metric__label">American Timeline Nodes</span>
+            </article>
+            <article class="metric panel panel--inset">
+              <span class="metric__value" id="metric-regions">06</span>
+              <span class="metric__label">Regional Lived Contexts</span>
+            </article>
+          </div>
+        </aside>
+      </header>
+
+      <section class="intro-panel panel reveal" id="homepage-intro">
+        <div class="section__heading">
+          <p class="eyebrow">Introduction</p>
+          <h2>A different way into the topic.</h2>
+        </div>
+        <p class="intro-panel__text">
+          Instead of treating Islam like one fixed set of ideas, this website moves through a series of connected
+          perspectives. It starts with the public narratives many people already know, then shifts into the history of
+          Islam in America, and finally opens up to a wider global view. The goal is to show that Islam is not one
+          story. It is something people live, interpret, and experience in different ways.
+        </p>
+      </section>
+
+      <section class="overview panel reveal">
+        <div class="section__heading">
+          <p class="eyebrow">Explore the Exhibit</p>
+          <h2>Three ways to move through the project.</h2>
+        </div>
+        <div class="overview__grid">
+          <a class="overview-card" href="#narratives">
+            <span class="overview-card__index">01</span>
+            <h3>Media</h3>
+            <p>Look at the gap between familiar headlines and the more complicated realities we discussed in class.</p>
+          </a>
+          <a class="overview-card" href="#timeline">
+            <span class="overview-card__index">02</span>
+            <h3>Timeline</h3>
+            <p>Follow how Islam in America has changed over time through identity, migration, activism, and social change.</p>
+          </a>
+          <a class="overview-card" href="#map">
+            <span class="overview-card__index">03</span>
+            <h3>Map</h3>
+            <p>Explore how Islam is lived in different parts of the world and how local context shapes religious life.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section panel reveal" id="narratives">
+        <div class="section__heading">
+          <p class="eyebrow">Section I</p>
+          <h2>Islam in the Media: Headlines vs Lived Reality</h2>
+          <p>
+            For many people, their understanding of Islam does not come from direct experience, but from what they see
+            in the news, social media, or political discourse. These portrayals often focus on conflict, extremism, or
+            cultural difference, which can create a narrow and sometimes misleading image of what Islam actually is.
+          </p>
+          <p>
+            However, throughout this course, I began to see Islam differently, not as a single, fixed system, but as a
+            lived tradition shaped by history, culture, and everyday life. This section compares those public portrayals
+            with the more complex realities explored in our readings and discussions.
+          </p>
+        </div>
+        <div class="media-compare">
+          <article class="detail-card panel panel--inset">
+            <p class="detail-card__label">Common Media Narratives</p>
+            <ul class="media-list" id="media-left-list">
+              <li>Islam is often associated with violence or extremism</li>
+              <li>Muslim societies are portrayed as oppressive, especially toward women</li>
+              <li>Islam is framed as rigid and unchanging</li>
+              <li>Muslim identity is treated as foreign or incompatible with Western values</li>
+            </ul>
+          </article>
+          <article class="detail-card panel panel--inset">
+            <p class="detail-card__label">What We Learned</p>
+            <ul class="media-list media-list--right">
+              <li>Islam is practiced in diverse ways across different cultures and communities</li>
+              <li>Muslim women's experiences are complex and cannot be reduced to a single narrative</li>
+              <li>Islamic traditions involve interpretation, discussion, and adaptation over time</li>
+              <li>Muslim identities exist across the world, including within the United States</li>
+            </ul>
+          </article>
+        </div>
+        <div class="media-notes">
+          <article class="detail-card panel panel--inset media-note">
+            <p class="detail-card__label">Reading Connection</p>
+            <p>
+              Lila Abu-Lughod challenges the idea that Muslim women need to be "saved" by Western societies, arguing
+              that this narrative oversimplifies their experiences and ignores the cultural and historical contexts they
+              live in. Instead of viewing Muslim communities through a lens of pity or superiority, she encourages a
+              more nuanced understanding that takes into account local values, agency, and lived realities.
+            </p>
+            <p>
+              This idea connects to a broader pattern in how Islam is represented. Media portrayals often reduce a
+              diverse global religion into a single story, while academic study reveals multiple perspectives shaped by
+              culture, history, and individual experience.
+            </p>
+          </article>
+          <article class="detail-card panel panel--inset media-note">
+            <p class="detail-card__label">Transition</p>
+            <p>
+              When we only rely on headlines, it becomes easy to see Islam as something distant or one-dimensional.
+              But once we begin to look deeper, through history, lived experiences, and different communities, a much
+              more complex picture begins to emerge.
+            </p>
+          </article>
+          <article class="detail-card panel panel--inset media-reflection">
+            <p class="detail-card__label">Reflection</p>
+            <p>
+              Before taking this course, I realized that a lot of what I understood about Islam came indirectly through
+              media. Seeing how different those portrayals were from the readings and discussions made me question how
+              much information we take at face value, especially when it comes to religion and culture.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section panel reveal" id="timeline">
+        <div class="section__heading">
+          <p class="eyebrow">Section II</p>
+          <h2>Islam in America: A Living History</h2>
+          <p>
+            Islam in America is often seen as something recent or foreign, but its history is much deeper and more
+            complex. Over time, Islam has taken on different meanings for different communities, shaped by issues of
+            race, identity, migration, and social change. This timeline highlights key moments that show how Islam in
+            America has evolved, not as a fixed tradition, but as a lived and changing experience.
+          </p>
+        </div>
+        <div class="timeline-stack" id="timeline-list" aria-label="Islam in America timeline"></div>
+        <article class="detail-card panel panel--inset timeline-transition">
+          <p class="detail-card__label">Transition</p>
+          <p>
+            Looking at this history, it becomes clear that Islam in America has never been static. It has always been
+            shaped by the people who practice it and the environments they live in. To better understand this diversity
+            on a global scale, we can look beyond the United States and explore how Islam is experienced in different
+            parts of the world.
+          </p>
+        </article>
+      </section>
+
+      <section class="section panel reveal" id="map">
+        <div class="section__heading">
+          <p class="eyebrow">Section III</p>
+          <h2>Islam Around the World: A Lived and Diverse Tradition</h2>
+          <p>
+            Islam is practiced across continents, cultures, and societies, making it one of the most diverse religious
+            traditions in the world. While it is often presented as uniform or unchanging, the reality is that Islam
+            is deeply shaped by local histories, cultural practices, and social environments.
+          </p>
+          <p>
+            This map highlights different regions to show how Islam is not a single experience, but a lived tradition
+            that takes on different meanings depending on where it is practiced.
+          </p>
+        </div>
+        <div class="map-layout">
+          <div class="map-card panel panel--inset">
+            <div class="map-surface" id="map-surface" aria-label="Interactive world map"></div>
+          </div>
+          <article class="detail-card panel panel--inset map-detail">
+            <p class="detail-card__label">Selected Region</p>
+            <h3 id="map-title"></h3>
+            <p class="map-region" id="map-region"></p>
+            <p class="map-preview" id="map-preview"></p>
+            <p id="map-description"></p>
+            <details class="map-deepview" id="map-deepview">
+              <summary>Deep View</summary>
+              <p id="map-deepview-text"></p>
+            </details>
+            <ul class="tag-list" id="map-tags"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reflection panel reveal">
+        <div class="section__heading">
+          <p class="eyebrow">Design Logic</p>
+          <h2>The interface is part of the thesis.</h2>
+        </div>
+        <p>
+          I wanted the site to feel exploratory rather than linear, because that matches the argument of the project.
+          Moving between media, history, and geography makes it easier to see that Islam cannot be understood through
+          one frame alone.
+        </p>
+      </section>
+
+      <section class="section panel reveal" id="sources">
+        <div class="section__heading">
+          <p class="eyebrow">Source Matrix</p>
+          <h2>Sources behind the project</h2>
+          <p>
+            These are the main readings and course materials that shaped the project. They can also serve as the basis
+            for more formal citations in the final version.
+          </p>
+        </div>
+        <ul class="sources-list" id="sources-list"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="app.js"></script>
+</body>
+</html>
