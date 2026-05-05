@@ -1,5 +1,7 @@
 const { narratives, timeline, regions, sources } = window.EXHIBIT_DATA;
 
+document.documentElement.classList.add("js");
+
 function renderTags(target, tags) {
   target.innerHTML = "";
   tags.forEach((tag) => {
